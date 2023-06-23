@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProductDetails from "./ProductDetails";
 
 function ProductsList({ products }) {
+  console.log("inside ProductsList");
   const [isSortedByName, setIsSortedByName] = useState(true);
 
   const sortedByName = products.toSorted((a, b) => {
