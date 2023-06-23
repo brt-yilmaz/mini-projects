@@ -9,7 +9,7 @@ const generateRandomProductName = () => {
   return productName;
 };
 
-const productList = Array.from({ length: 1000000 }, (_, index) => ({
+const productList = Array.from({ length: 2000000 }, (_, index) => ({
   id: index + 1,
   name: generateRandomProductName(),
   price: Math.floor(Math.random() * 1000) + 30, // Random price
