@@ -49,10 +49,6 @@ class Bird extends Animal {
   }
 }
 
-/**
- ** Note: If I didn't use the super keyword in our sub-classes, once I'd run the above code, I'd get the following error: Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor.
- */
-
 class HouseCat extends Cat {
   constructor(
     houseCatSound = "meow",
@@ -108,4 +104,36 @@ class Parrot extends Bird {
   }
 }
 
-const loveBird = new Parrot();
+var fiji = new Parrot(false); // we're passing `false` to the constructor so that fiji can't talk
+var polly = new Parrot(true); // we're passing `true` to the constructor so that polly can talk
+
+fiji.makeSound(); // undefined
+fiji.makeSound(true); // chirp
+
+polly.makeSound(); // I'm a talking parrot!
+polly.makeSound(true); // chirp, I'm a talking parrot!
+
+polly.color; // yellow
+polly.energy; // 100
+
+polly.isActive(); // Energy is decreasing, currently at: 80
+
+var penguin = new Bird("shriek", false, "black and white", 200); // setting all the custom properties
+penguin; // Bird {color: 'black and white', energy: 200, sound: 'shriek', canFly: false }
+
+penguin.sound; // 'shriek'
+penguin.canFly; // false
+penguin.color; // 'black and white'
+penguin.energy; // 200
+penguin.isActive(); // Energy is decreasing, currently at: 180
+
+var leo = new HouseCat();
+
+// leo, no purring please:
+leo.makeSound(false); // meow
+// leo, both purr and meow now:
+leo.makeSound(true); // purr, meow
+
+var cuddles = new Tiger();
+cuddles.makeSound(false); // Roar!
+cuddles.makeSound(true); // purr, Roar!
