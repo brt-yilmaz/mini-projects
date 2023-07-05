@@ -1,12 +1,25 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import Animals from "./components/Animals";
+import Modal from "./components/Modal";
+import Users from "./components/Users";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <></>;
+  return (
+    <Modal>
+      <Modal.Open opens={"users"}>
+        <button>Open User Modal</button>
+      </Modal.Open>
+      <Modal.Window name={"users"}>
+        <Users />
+      </Modal.Window>
+      <Modal.Open opens={"animals"}>
+        <button>Open Animals Modal</button>
+      </Modal.Open>
+      <Modal.Window name={"animals"}>
+        <Animals />
+      </Modal.Window>
+    </Modal>
+  );
 }
 
 export default App;

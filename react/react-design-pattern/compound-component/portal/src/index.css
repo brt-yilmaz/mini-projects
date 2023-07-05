@@ -24,11 +24,12 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  padding: 150px;
   display: flex;
+  flex-direction: column;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  gap: 2rem;
 }
 
 h1 {
@@ -66,4 +67,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.modal {
+  display: flex;
+  gap: 2rem;
 }
