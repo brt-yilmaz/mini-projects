@@ -15,4 +15,4 @@ const composedFunction = compose(addTwo, square, subtractThree, double);
 
 // Test the result
 const result = composedFunction(5);
-console.log(result); // Output: 51
+console.log(result); // Output: 92
