@@ -7,9 +7,10 @@ const person:{first:string, last:string, age:number} = {
 // Type Alias
 
 type Person = {
-  first: string,
+  readonly first: string, // After first assign you can not change. 
   last: string,
-  age: number
+  age: number,
+  grandMother?: string, // Optional
 }
 
 const berat:Person = {
@@ -20,13 +21,13 @@ const berat:Person = {
 
 // Nested Objects
 
-type familyTree = {
+type FamilyTree = {
   father: Person,
   mother: Person,
   //etc
 }
 
-const familyYilmaz:familyTree = {
+const familyYilmaz:FamilyTree = {
   father: {
     first: 'osman',
     last: 'yilmaz',
@@ -38,3 +39,25 @@ const familyYilmaz:familyTree = {
     age: 63
   }
 }
+
+// Intersection Types
+
+type Animal = {
+  animalName : string,
+  animalAge: number
+}
+
+type AnimalLover = Animal & Person  & {
+  address: string,
+}; // Combination of three types
+
+const beratYilmaz:AnimalLover = {
+  first: 'berat',
+  last: 'yilmaz',
+  age: 34,
+  animalName: 'cat',
+  animalAge: 3,
+  address: 'Germany'
+}
+
+  
