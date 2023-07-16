@@ -60,4 +60,4 @@ const beratYilmaz:AnimalLover = {
   address: 'Germany'
 }
 
-  
+
