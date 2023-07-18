@@ -60,4 +60,18 @@ const beratYilmaz:AnimalLover = {
   address: 'Germany'
 }
 
+// ------------------------------- Literal Inference
 
+interface ConstTypeAlias {
+  device: string;
+  brand: 'apple' | 12342 
+}
+
+const phoneObject /* :ConstTypeAlias */ = {device: 'best phone', brand: 'apple'} as const // you can write const or you can change type of phoneObject or you can assign type to brand brand: phoneObject.brand as 'apple',
+
+const phone:ConstTypeAlias = {
+  device: phoneObject.device,
+  brand: phoneObject.brand , // as 'apple'
+}
+
+// --------------------------------

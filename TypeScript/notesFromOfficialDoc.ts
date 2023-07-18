@@ -5,6 +5,8 @@
 
 * The "strictNullChecks" flag makes handling null and undefined more explicit, and spares us from worrying about whether we forgot to handle null and undefined
 
-* 
+* Array.isArray(arr) you can use that to check a variable
+
+* You can use 'as const' to make object read-only
 
 */
