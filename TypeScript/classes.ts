@@ -55,7 +55,7 @@ class Mortal extends God {
     this.currentAge = currentAge;
   }
 
-  whenWillIDie() {
+  whenWillIDie():string {
     const remainingYears = 80 - this.currentAge; // Assuming the average human lifetime is 80 years
     const today = new Date();
     const deathDate = new Date(today.getFullYear() + remainingYears, today.getMonth(), today.getDate());
@@ -69,3 +69,31 @@ console.log(hansi.whenWillIDie());
 
 
 // --------------------------------------
+
+
+class Car {
+  private engineStatus: string;
+
+  constructor(private make: string, private model: string, private year: number) {
+    this.engineStatus = 'off';
+  }
+
+  startEngine(): void {
+    this.engineStatus = 'on';
+    console.log('Engine started.');
+  }
+
+  stopEngine(): void {
+    this.engineStatus = 'off';
+    console.log('Engine stopped.');
+  }
+
+  getCarInfo(): string {
+    return `Car: ${this.make} ${this.model}, Year: ${this.year}, Engine: ${this.engineStatus}`;
+  }
+}
+
+const myCar = new Car('Tesla', 'Model 3', 2022);
+myCar.startEngine(); 
+myCar.stopEngine(); 
+myCar.getCarInfo();

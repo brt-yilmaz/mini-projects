@@ -7,7 +7,7 @@ type User = {
   last: string;
 }
 
-const users:Array<User> = [{first:'Guten',last:'Tag'}] // You can also define an Array type like this.
+const users:Array<User> = [{first:'Guten',last:'Tag'},{first:'berat', last:'yilmaz'}] // You can also define an Array type like this.
 
 // Multidimensional Array
 
