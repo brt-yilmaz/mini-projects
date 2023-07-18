@@ -1,4 +1,31 @@
-.DS_STORE
+# Dependencies
+node_modules/
+
+# Build output
+build/
+out/
+dist/
+.next/
+*.js
+*.js.map
+*.d.ts
+*.tsbuildinfo
+
+# Python
+*.pyc
+
+# Grunt
+.grunt
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/.DS_STORE
 node_modules
 scripts/flow/*/.flowconfig
 .flowconfig
@@ -36,3 +63,168 @@ packages/react-devtools-extensions/.tempUserDataDir
 packages/react-devtools-inline/dist
 packages/react-devtools-shell/dist
 packages/react-devtools-timeline/dist
+
+# Next.js
+.next/
+out/
+
+# Angular
+dist/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Vue.js
+/dist/
+/node_modules/
+
+# Express.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ruby on Rails
+/.bundle/
+/vendor/
+/.config
+/.rails
+/db/*.sqlite3
+/public/system/*
+/coverage/
+
+# Django
+__pycache__/
+*.pyc
+*.pyo
+*.env
+media/
+
+# Laravel
+/vendor/
+/node_modules/
+/public/hot
+/public/storage
+/storage/*.key
+/vendor/.env
+.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+yarn.lock
+
+# Flask
+__pycache__/
+*.pyc
+*.pyo
+*.env
+
+# Docker
+.docker/
+docker-compose.yml
+
+# CSS
+*.css.map
+
+# IDE/Editor
+.vscode/
+.idea/
+*.sublime-*
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+*.js
+*.js.map
+*.d.ts
+
+*.iml
+
+# Swp Files
+*.swp
+*.swo
+
+# React DevTools
+packages/react-devtools-core/dist
+packages/react-devtools-extensions/chrome/build
+packages/react-devtools-extensions/chrome/*.crx
+packages/react-devtools-extensions/chrome/*.pem
+packages/react-devtools-extensions/firefox/build
+packages/react-devtools-extensions/firefox/*.xpi
+packages/react-devtools-extensions/firefox/*.pem
+packages/react-devtools-extensions/shared/build
+packages/react-devtools-extensions/.tempUserDataDir
+packages/react-devtools-inline/dist
+packages/react-devtools-shell/dist
+packages/react-devtools-timeline/dist
+
+# Next.js
+.next/
+
+# Angular
+dist/
+npm-debug.log
+yarn-error.log
+
+# Vue.js
+/dist/
+
+# Express.js
+npm-debug.log
+yarn-error.log
+
+# Ruby on Rails
+.bundle/
+/vendor/
+/config
+/rails
+/db/*.sqlite3
+/public/system/*
+/coverage/
+
+# Django
+__pycache__/
+*.env
+media/
+
+# Laravel
+/vendor/
+/public/hot
+/public/storage
+/storage/*.key
+/vendor/.env
+.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+yarn.lock
+
+# Flask
+__pycache__/
+*.env
+
+# Docker
+.docker/
+docker-compose.yml
+
+# CSS
+*.css.map
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+# AWS S3
+.s3-credentials
+
+# AWS CloudFormation
+.template.yaml
+
+# AWS Elastic Beanstalk
+.elasticbeanstalk/
