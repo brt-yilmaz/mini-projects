@@ -9,4 +9,7 @@
 
 * You can use 'as const' to make object read-only
 
+* checking whether something == null actually not only checks whether it is specifically the value null - it also checks whether it’s potentially undefined.
+
+
 */

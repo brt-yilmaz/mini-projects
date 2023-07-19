@@ -3,6 +3,18 @@
 // ----------------------------------------------
 // you can use ** in ** to check keys in object. If it is necessary use return to continue narrowing type. 
 
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+ 
+function move(animal: Fish | Bird) {
+  if ("swim" in animal) {
+    return animal.swim();
+  }
+ 
+  return animal.fly();
+}
+
+//-----------------------------
 interface TvShows {
   name: string;
   episodes: number;
@@ -25,6 +37,16 @@ getTotalDuration({name: 'hababam sinifi', duration:90})
 
 // you can use ** instanceof ** to narrow type
 
+function logValue(x: Date | string) {
+  if (x instanceof Date) {
+    console.log(x.toUTCString());
+
+  } else {
+    console.log(x.toUpperCase());
+  }
+}
+
+
 // --------------------- Predicate
 interface Cat {
   meow():string
@@ -43,4 +65,37 @@ function makeNoise(animal: unknown) {
 }
 
 
-// ----------------------
+// ---------------------- Discriminated unions
+
+interface Circle {
+  kind: "circle";
+  radius: number;
+}
+ 
+interface Square {
+  kind: "square";
+  sideLength: number;
+}
+
+interface Triangle {
+  kind: "triangle";
+  sideLength: number;
+}
+ 
+type Shape = Circle | Square // if you add | Triangle you will get a warning in default case ;
+
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    case "square":
+      return shape.sideLength ** 2;
+      default:
+      const _exhaustiveCheck: never = shape; // you will get a warning if you don't handle properly 
+      return _exhaustiveCheck;
+  }
+}
+
+// ------------------------------
+
+
