@@ -10,7 +10,6 @@ const compose =
   (x) =>
     functions.reduce((acc, fn) => fn(acc), x);
 
-// Compose the functions into a single function
 const composedFunction = compose(addTwo, square, subtractThree, double);
 
 // Test the result

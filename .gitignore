@@ -6,7 +6,6 @@ build/
 out/
 dist/
 .next/
-*.js
 *.js.map
 *.d.ts
 *.tsbuildinfo
@@ -138,7 +137,6 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
-*.js
 *.js.map
 *.d.ts
 
