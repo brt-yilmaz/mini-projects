@@ -14,7 +14,7 @@ const users = [
 function checkID(req, res, next, val) {
   const user = users.find((user) => user.id === parseInt(val));
   if (!user) {
-    return res.status(404).json({
+    return res.status(400).json({
       status: "fail",
       message: "Invalid ID",
     });

@@ -5,7 +5,7 @@ exerciseRouter.route("/").get(getAllExercises).post(checkBody, createExercise);
 
 function checkBody(req, res, next) {
   if (!req.body.name || !req.body.duration) {
-    return res.status(404).json({
+    return res.status(400).json({
       status: "fail",
       message: "Missing name or price",
     });

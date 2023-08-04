@@ -8,6 +8,7 @@ const exerciseRouter = require("./exerciseRouter"); // Import the exerciseRouter
 app.use(express.json());
 
 app.use("/users", userRouter);
+app.use(express.static(`${__dirname}/public`)); // To serve static site
 
 app.use("/exercises", exerciseRouter);
 
