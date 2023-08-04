@@ -1,7 +1,10 @@
 const express = require("express");
-const app = express();
-const port = 3000;
+const dotenv = require("dotenv");
 
+dotenv.config({ path: "./config.env" });
+
+const app = express();
+const port = process.env.PORT;
 const userRouter = require("./userRouter"); // Import the userRouter.js file
 const exerciseRouter = require("./exerciseRouter"); // Import the exerciseRouter.js file
 
