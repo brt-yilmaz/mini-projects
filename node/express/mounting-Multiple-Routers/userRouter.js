@@ -1,8 +1,21 @@
 const express = require("express");
 const userRouter = express.Router();
 
+userRouter.param("id", checkID);
+
 userRouter.route("/").get(getAllUsers).post(createUser);
 userRouter.route("/:id").get(getUser).patch(updateUser);
+
+function checkID(req, res, next, val) {
+  const id = users.find((user) => user.id === parseInt(val));
+  if (!id) {
+    return res.status(404).send({
+      status: "fail",
+      message: "InvalidID",
+    });
+  }
+  next();
+}
 
 function getAllUsers(req, res) {
   // Logic to get all users
