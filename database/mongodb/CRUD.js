@@ -94,9 +94,74 @@ db.grades.insertMany([
 
 db.zips.find({ _id: ObjectId("5c8eccc1caa187d17ca6ed16") });
 
+db.books.find({ genre: "Historical" }); // The following query will return documents where the genre field is equal to a scalar value of Historical, and it will also return documents that have an array value equal to Historical, such as ["Historical", "Fiction"].
+
 db.sales.find({ storeLocation: { $in: ["London", "NewYork"] } }); // The $in operator allows you to select all documents that have a field value equal to any of the values that are specified in the array.
 /**
  * TODO you can use in find method also $gt, $lt, $lte, $gte.
  */
 
 db.sales.find({ "items.price": { $gt: 200 } });
+
+// Use the $elemMatch operator to find all documents that contain the specified sub document(Array). For example:
+db.sales.find({
+  // $elemMatch
+  items: {
+    $elemMatch: { name: "laptop", price: { $gt: 800 }, quantity: { $gte: 1 } },
+  },
+});
+
+db.routes.find({
+  // $or & $and
+  $and: [
+    { $or: [{ dst_airport: "SEA" }, { src_airport: "SEA" }] },
+    { $or: [{ "airline.name": "American Airlines" }, { airplane: 320 }] },
+  ],
+});
+
+db.sales.find({
+  // implicit $and
+  purchasedMethod: "Online",
+  couponUsed: true,
+  "customer.age": { $lte: 25 },
+});
+
+db.books.replaceOne(
+  {
+    _id: ObjectId("6282afeb441a74a98dbbec4e"), // filter
+  },
+  {
+    // replacement
+    title: "Data Science Fundamentals for Python and MongoDB",
+    isbn: "1484235967",
+    publishedDate: new Date("2018-5-10"),
+    thumbnailUrl:
+      "https://m.media-amazon.com/images/I/71opmUBc2wL._AC_UY218_.jpg",
+    authors: ["David Paper"],
+    categories: ["Data Science"],
+  }
+);
+
+db.birds.replaceOne(
+  { _id: ObjectId("6286809e2f3fa87b7d86dccd") },
+  {
+    common_name: "Morning Dove",
+    scientific_name: "Zenaida macroura",
+    wingspan_cm: 37.23,
+    habitat: ["urban areas", "farms", "grassland"],
+    diet: ["seeds"],
+  }
+);
+
+db.podcasts.updateOne(
+  // $set, $upsert
+  { title: "The Developer Hub" },
+  { $set: { topics: ["databases", "MongoDB"] } },
+  { upsert: true }
+);
+
+db.podcasts.updateOne(
+  // $push adds a new value to the hosts array field
+  { _id: ObjectId("5e8f8f8f8f8f8f8f8f8f8f8") },
+  { $push: { hosts: "Nic Raboy" } }
+);
