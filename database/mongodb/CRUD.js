@@ -165,3 +165,50 @@ db.podcasts.updateOne(
   { _id: ObjectId("5e8f8f8f8f8f8f8f8f8f8f8") },
   { $push: { hosts: "Nic Raboy" } }
 );
+
+db.birds.updateOne(
+  // $set
+  { _id: ObjectId("6268413c613e55b82d7065d2") },
+  { $set: { tags: ["geese", "herbivore", "migration"] } }
+);
+
+db.birds.updateOne(
+  // $push $each
+  { _id: ObjectId("6268471e613e55b82d7065d7") },
+  { $push: { diet: { $each: ["newts", "opossum", "skunks", "squirrels"] } } }
+);
+
+db.birds.updateOne(
+  // $inc , upsert
+  { common_name: "Robin Redbreast" },
+  { $inc: { sightings: +1 }, $set: { last_update: new Date() } },
+  { upsert: true } // without $ sign
+);
+
+db.podcasts.findAndModify({
+  query: { _id: ObjectId("6261a92dfee1ff300dc80bf1") },
+  update: { $inc: { subscribers: 1 } },
+  new: true,
+});
+
+db.books.updateMany(
+  { publishedDate: { $lt: new Date("2019-01-01") } },
+  { $set: { status: "LEGACY" } }
+);
+
+db.birds.updateMany(
+  {
+    common_name: {
+      $in: ["Blue Jay", "Grackle"], // like $or operator
+    },
+  },
+  {
+    $set: {
+      last_seen: ISODate("2022-01-01"),
+    },
+  }
+);
+
+db.podcasts.deleteOne({ _id: Objectid("6282c9862acb966e76bbf20a") });
+
+db.podcasts.deleteMany({ category: "crime" });
