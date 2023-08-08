@@ -24,6 +24,7 @@ db.grades.insertOne({
 
 db.grades.insertMany([
   // to insert multiple documents at once, must be array
+
   {
     student_id: 546789,
     products: [
