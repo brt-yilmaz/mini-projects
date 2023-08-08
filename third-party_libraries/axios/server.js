@@ -5,7 +5,7 @@ const connectDB = require("./dbConnection");
 const server = http.createServer(async (req, res) => {
   if (req.url === "/") {
     try {
-      const db = await connectDB(); // connecto to Database and return client.db()
+      const db = await connectDB(); // connect to Database and return client.db()
       const collections = await db.admin().listDatabases();
 
       res.writeHead(200, { "Content-Type": "application/json" });
