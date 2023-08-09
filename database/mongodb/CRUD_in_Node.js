@@ -57,3 +57,48 @@ const insertMany = async () => {
 };
 
 insertMany();
+
+const documentToUpdate = { _id: ObjectId("62d6e04ecab6d8e130497482") };
+
+const update = { $inc: { balance: 100 } };
+
+const updateOne = async () => {
+  try {
+    await connectToDatabase();
+    let result = await accountsCollection.updateOne(documentToUpdate, update);
+    result.modifiedCount === 1
+      ? console.log("Updated one document")
+      : console.log("No documents updated");
+  } catch (err) {
+    console.error(`Error updating document: ${err}`);
+  } finally {
+    await client.close();
+  }
+};
+
+updateOne(); // The `_id` field is immutable and cannot be overwritten.
+
+const documentsToUpdate = { account_type: "checking" };
+
+const updates = { $push: { transfers_complete: "TR413308000" } };
+
+const updateMany = async () => {
+  try {
+    await connectToDatabase();
+    let result = await accountsCollection.updateMany(
+      documentsToUpdate,
+      updates
+    );
+    result.modifiedCount > 0
+      ? console.log(`Updated ${result.modifiedCount} documents`)
+      : console.log("No documents updated");
+  } catch (err) {
+    console.error(`Error updating documents: ${err}`);
+  } finally {
+    await client.close();
+  }
+};
+
+updateMany();
+
+// you can use with the same way deleteOne, deleteMany,
