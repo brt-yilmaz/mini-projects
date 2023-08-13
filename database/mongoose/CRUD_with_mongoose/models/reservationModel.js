@@ -6,7 +6,6 @@ const reservationSchema = new mongoose.Schema({
   userName: { type: String, required: true },
   location: { type: String, enum: ["indoor", "outdoor"], default: "indoor" },
   numberOfPeople: { type: Number, default: 4, min: 2, max: 10 },
-
   createdAt: { type: Date, default: Date.now },
 });
 

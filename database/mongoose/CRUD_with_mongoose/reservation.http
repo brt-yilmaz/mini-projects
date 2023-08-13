@@ -1,0 +1,14 @@
+###
+### Create a New Reservation
+###
+
+POST http://localhost:3000/reservations/create
+Content-Type: application/json
+
+{
+  "eventName": "Breakfast",
+  "eventDate": "2023-09-15T08:00:00Z",
+  "userName": "Berat Yilmaz",
+  "location": "indoor",
+  "numberOfPeople": 4
+}
