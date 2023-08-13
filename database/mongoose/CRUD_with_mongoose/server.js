@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const reservationRoutes = require("./routes/reservationRoutes");
@@ -13,6 +14,7 @@ const MONGODB_URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_P
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 // Routes
 app.use("/reservations", reservationRoutes);
 

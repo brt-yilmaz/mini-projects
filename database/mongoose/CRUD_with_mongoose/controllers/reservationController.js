@@ -18,3 +18,12 @@ exports.createReservation = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+exports.getAllReservations = async (req, res) => {
+  try {
+    const reservations = await Reservation.find();
+    res.status(200).json(reservations);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};

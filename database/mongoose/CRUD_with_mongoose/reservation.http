@@ -1,4 +1,10 @@
 ###
+### Get All Reservations
+###
+
+GET http://localhost:3000/reservations/getReservations
+
+###
 ### Create a New Reservation
 ###
 
