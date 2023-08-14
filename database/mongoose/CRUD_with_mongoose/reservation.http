@@ -8,6 +8,13 @@ GET http://localhost:3000/reservations/getReservations
 ### Create a New Reservation
 ###
 
+###
+### Get Reservation by Id
+###
+
+GET http://localhost:3000/reservations/getReservations/64d93b8de9f88cab732bf1bf
+
+
 POST http://localhost:3000/reservations/create
 Content-Type: application/json
 

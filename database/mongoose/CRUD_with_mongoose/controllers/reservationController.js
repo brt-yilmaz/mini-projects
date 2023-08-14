@@ -22,8 +22,31 @@ exports.createReservation = async (req, res) => {
 exports.getAllReservations = async (req, res) => {
   try {
     const reservations = await Reservation.find();
-    res.status(200).json(reservations);
+    res.status(200).json({
+      status: "success",
+      results: reservations.length,
+      data: {
+        reservations,
+      },
+    });
   } catch (error) {
-    res.status(500).json({ error: "Server error" });
+    res.status(404).json({ status: "fail", error: "Server error" });
+  }
+};
+
+exports.getReservation = async (req, res) => {
+  try {
+    const reservation = await Reservation.findById(req.params.id);
+    res.status(200).json({
+      status: "success",
+      data: {
+        reservation,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
   }
 };
