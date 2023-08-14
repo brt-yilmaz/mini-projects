@@ -37,6 +37,32 @@ exports.getAllReservations = async (req, res) => {
 exports.getReservation = async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id);
+    // Tour.findOne({_id : req.params.id})
+    res.status(200).json({
+      status: "success",
+      data: {
+        reservation,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
+
+exports.updateReservation = async (req, res) => {
+  try {
+    console.log(req.body);
+    const reservation = await Reservation.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
     res.status(200).json({
       status: "success",
       data: {

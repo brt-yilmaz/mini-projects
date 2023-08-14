@@ -5,6 +5,10 @@ const router = express.Router();
 
 router.post("/create", reservationController.createReservation);
 router.get("/getReservations", reservationController.getAllReservations);
-router.get("/getReservations/:id", reservationController.getReservation);
+
+router
+  .route("/getReservations/:id")
+  .get(reservationController.getReservation)
+  .patch(reservationController.updateReservation);
 
 module.exports = router;
