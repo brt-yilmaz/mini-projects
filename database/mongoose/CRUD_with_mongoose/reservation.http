@@ -37,3 +37,11 @@ Content-Type: application/json
   "location": "indoor",
   "numberOfPeople": 4
 }
+
+
+###
+### Delete by Id
+###
+
+DELETE http://localhost:3000/reservations/getReservations/64da266fd2110ddfd4c818f7
+

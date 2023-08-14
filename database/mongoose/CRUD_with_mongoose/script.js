@@ -8,7 +8,8 @@ async function fetchReservations() {
   const reservationList = document.getElementById("reservationList");
   reservationList.innerHTML = ""; // Clear the list
 
-  data.forEach((reservation) => {
+  data.data.reservations.forEach((reservation) => {
+    // Change this line
     const listItem = document.createElement("li");
     listItem.textContent = `${reservation.eventName} - ${reservation.userName} - ${reservation.eventDate}`;
     reservationList.appendChild(listItem);
