@@ -1,23 +1,26 @@
 const fs = require("fs");
 
-console.log("Script started.");
+console.log("Starting the script.");
 
 setImmediate(() => {
-  console.log("setImmediate callback executed.");
+  console.log("Top-level callback inside setImmediate executed.");
 
   setImmediate(() => {
-    console.log("Inner setImmediate callback executed.");
+    console.log("Nested callback inside setImmediate executed.");
   });
 
   process.nextTick(() => {
-    console.log("Inner setImmediate - nextTick executed.");
+    console.log("Nested callback inside setImmediate - nextTick executed.");
   });
 
   fs.readFile("example.txt", "utf8", (err, data) => {
     if (err) {
       console.error("Error reading file:", err);
     } else {
-      console.log("File contents:", data);
+      console.log(
+        "File contents from nested fs.readFile in set Immediate:",
+        data
+      );
     }
   });
 });
@@ -26,23 +29,12 @@ fs.readFile("example.txt", "utf8", (err, data) => {
   if (err) {
     console.error("Error reading file:", err);
   } else {
-    console.log("File contents:", data);
+    console.log("File contents from top level fs.readFile:", data);
   }
 });
 
 process.nextTick(() => {
-  console.log("process.nextTick callback executed.");
+  console.log("Top-level callback inside process.nextTick executed.");
 });
 
-console.log("Script ended.");
-
-/*
-Script started.
-Script ended.
-process.nextTick callback executed.
-setImmediate callback executed.
-Inner setImmediate - nextTick executed.
-Inner setImmediate callback executed.
-File contents: This is a test file to simulate nodejs event Loop.
-File contents: This is a test file to simulate nodejs event Loop.
-*/
+console.log("Script finished.");

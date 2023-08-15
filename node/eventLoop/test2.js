@@ -1,74 +1,77 @@
-console.log("Script started.");
+console.log("Starting the script.");
 
 setTimeout(() => {
-  console.log("Callback inside setTimeout executed.");
-
-  setTimeout(() => {
-    console.log("Inner callback inside setTimeout executed.");
-  }, 0);
+  console.log("Top-level callback inside setTimeout executed.");
 
   process.nextTick(() => {
-    console.log("Inner callback inside setTimeout - nextTick executed.");
+    console.log("Nested callback inside setTimeout - nextTick executed.");
   });
 
   Promise.resolve().then(() => {
-    console.log("Inner callback inside setTimeout - Promise executed.");
+    console.log("Nested callback inside setTimeout - Promise executed.");
   });
+
+  setTimeout(() => {
+    console.log("Nested callback inside setTimeout - setTimeout executed.");
+  }, 0);
 }, 0);
 
 process.nextTick(() => {
-  console.log("Callback inside process.nextTick executed.");
+  console.log("Top-level callback inside process.nextTick executed.");
 
   process.nextTick(() => {
-    console.log("Inner callback inside process.nextTick executed.");
+    console.log("Nested callback inside process.nextTick - nextTick executed.");
+
     process.nextTick(() => {
-      console.log("2.Inner callback inside process.nextTick executed.");
+      console.log(
+        "Deeply nested callback inside process.nextTick - nextTick executed."
+      );
     });
+  });
+
+  Promise.resolve().then(() => {
+    console.log("Nested callback inside process.nextTick - Promise executed.");
   });
 
   setTimeout(() => {
     console.log(
-      "Inner callback inside process.nextTick - setTimeout executed."
+      "Nested callback inside process.nextTick - setTimeout executed."
     );
   }, 0);
-
-  Promise.resolve().then(() => {
-    console.log("Inner callback inside process.nextTick - Promise executed.");
-  });
 });
 
 Promise.resolve().then(() => {
-  console.log("Callback inside Promise executed.");
-
-  Promise.resolve().then(() => {
-    console.log("Inner callback inside Promise executed.");
-  });
+  console.log("Top-level callback inside Promise executed.");
 
   process.nextTick(() => {
-    console.log("Inner callback inside Promise - nextTick executed.");
+    console.log("Nested callback inside Promise - nextTick executed.");
+  });
+
+  Promise.resolve().then(() => {
+    console.log("Nested callback inside Promise - Promise executed.");
   });
 
   setTimeout(() => {
-    console.log("Inner callback inside Promise - setTimeout executed.");
+    console.log("Nested callback inside Promise - setTimeout executed.");
   }, 0);
 });
 
-console.log("Script ended.");
+console.log("Script finished.");
 
 /*
-script started.
-Script ended.
-Callback inside process.nextTick executed.
-Inner callback inside process.nextTick executed.
-2.Inner callback inside process.nextTick executed.
-Callback inside Promise executed.
-Inner callback inside process.nextTick - Promise executed.
-Inner callback inside Promise executed.
-Inner callback inside Promise - nextTick executed.
-Callback inside setTimeout executed.
-Inner callback inside setTimeout - nextTick executed.
-Inner callback inside setTimeout - Promise executed.
-Inner callback inside process.nextTick - setTimeout executed.
-Inner callback inside Promise - setTimeout executed.
-Inner callback inside setTimeout executed.
+starting the script.
+Script finished.
+Top-level callback inside process.nextTick executed.
+Nested callback inside process.nextTick - nextTick executed.
+Deeply nested callback inside process.nextTick - nextTick executed.
+Top-level callback inside Promise executed.
+Nested callback inside process.nextTick - Promise executed.
+Nested callback inside Promise - Promise executed.
+Nested callback inside Promise - nextTick executed.
+Top-level callback inside setTimeout executed.
+Nested callback inside setTimeout - nextTick executed.
+Nested callback inside setTimeout - Promise executed.
+Nested callback inside process.nextTick - setTimeout executed.
+Deeply nested callback inside Promise - setTimeout executed.
+Nested callback inside setTimeout - setTimeout executed.
 */
