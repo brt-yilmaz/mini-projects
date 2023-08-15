@@ -24,3 +24,9 @@ Defines a particular pattern that an input field value has to fulfill to be cons
 ```html
 <input type="tel" id="phone" name="phone" pattern=”^(?:0|\+?44)(?:\d\s?){9,10}$” > 
 ```
+
+The reset values will reset the form contents to its values.It doesn't clear validation errors.
+
+```html
+<input type="reset"> 
+```
