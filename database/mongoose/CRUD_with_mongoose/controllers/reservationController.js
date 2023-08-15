@@ -21,12 +21,19 @@ exports.createReservation = async (req, res) => {
 
 exports.getAllReservations = async (req, res) => {
   try {
+    // Filtering
     const queryObj = { ...req.query };
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|lte|lt|gt)\b/g, (match) => `$${match}`);
 
-    const query = Reservation.find(JSON.parse(queryStr));
+    let query = Reservation.find(JSON.parse(queryStr));
 
+    // Sorting
+    if (req.query.sort) {
+      query = query.sort(req.query.sort);
+    }
+
+    // Execute Query
     const reservations = await query;
     res.status(200).json({
       status: "success",

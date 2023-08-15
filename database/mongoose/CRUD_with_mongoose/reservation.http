@@ -8,8 +8,13 @@ GET http://localhost:3000/reservations/getReservations
 ### Get Reservations via query
 ###
 
-GET http://localhost:3000/reservations/getReservations?numberOfPeople[lt]=4 
+GET http://localhost:3000/reservations/getReservations?numberOfPeople[lt]=4&sort=-numberOfPeople
 
+###
+### Sort Reservations via query
+###
+
+GET http://localhost:3000/reservations/getReservations?sort=numberOfPeople+eventName
 
 
 ###
@@ -38,11 +43,11 @@ POST http://localhost:3000/reservations/create
 Content-Type: application/json
 
 {
-  "eventName": "Breakfast",
+  "eventName": "Dinner",
   "eventDate": "2023-09-15T08:00:00Z",
-  "userName": "Berat Yilmaz",
-  "location": "indoor",
-  "numberOfPeople": 4
+  "userName":  "Kezban Yilmaz",
+  "location":  "indoor",
+  "numberOfPeople": 6
 }
 
 
