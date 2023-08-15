@@ -21,7 +21,13 @@ exports.createReservation = async (req, res) => {
 
 exports.getAllReservations = async (req, res) => {
   try {
-    const reservations = await Reservation.find();
+    const queryObj = { ...req.query };
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|lte|lt|gt)\b/g, (match) => `$${match}`);
+
+    const query = Reservation.find(JSON.parse(queryStr));
+
+    const reservations = await query;
     res.status(200).json({
       status: "success",
       results: reservations.length,
