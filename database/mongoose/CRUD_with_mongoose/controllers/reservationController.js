@@ -33,6 +33,8 @@ exports.getAllReservations = async (req, res) => {
       query = query.sort(req.query.sort);
     }
 
+    // Field Limiting (Projecting)
+
     // Execute Query
     const reservations = await query;
     res.status(200).json({
