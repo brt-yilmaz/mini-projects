@@ -19,4 +19,8 @@ router
   .patch(reservationController.updateReservation)
   .delete(reservationController.deleteReservation);
 
+router
+  .route("/reservationStats")
+  .get(reservationController.getReservationStats);
+
 module.exports = router;

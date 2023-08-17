@@ -65,3 +65,7 @@ GET http://localhost:3000/reservations/getReservations?fields=numberOfPeople%20e
 ### Closest Reservation
 
 GET http://localhost:3000/reservations/getReservations/closestReservation
+
+### get stats
+
+GET http://localhost:3000/reservations/reservationStats
