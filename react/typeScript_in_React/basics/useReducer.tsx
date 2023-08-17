@@ -39,3 +39,11 @@ export default function App() {
     </div>
   );
 }
+
+// In case you use the redux library to write reducer function, It provides a convenient helper of the format Reducer<State, Action> which takes care of the return type for you.
+
+/*
+import { Reducer } from 'redux';
+
+export function reducer: Reducer<AppState, Action>() {}
+*/

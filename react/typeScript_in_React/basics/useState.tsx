@@ -19,3 +19,10 @@ type RequestState =
   | { status: 'error', error: Error };
 
 const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' });
+
+// However, many hooks are initialized with null-ish default values, and you may wonder how to provide types. Explicitly declare the type, and use a union type:
+
+const [user, setUser] = useState<User | null>(null);
+
+// later...
+setUser(newUser);
