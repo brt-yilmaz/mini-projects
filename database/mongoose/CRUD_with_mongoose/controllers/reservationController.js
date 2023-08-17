@@ -1,5 +1,7 @@
 const Reservation = require("../models/reservationModel");
 
+const APIFeatures = require("../utils/apiFeatures");
+
 exports.createReservation = async (req, res) => {
   try {
     const { eventName, eventDate, userName, location, numberOfPeople } =
@@ -27,50 +29,66 @@ exports.aliasClosestReservations = async (req, res, next) => {
 };
 
 exports.getAllReservations = async (req, res) => {
-  try {
-    // Filtering
-    const queryObj = { ...req.query };
-    let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|lte|lt|gt)\b/g, (match) => `$${match}`);
+  const features = new APIFeatures(Reservation.find(), req.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
 
-    let query = Reservation.find(JSON.parse(queryStr));
+  const reservations = await features.query;
 
-    // Sorting
-    if (req.query.sort) {
-      query = query.sort(req.query.sort);
-    }
+  res.status(200).json({
+    status: "success",
+    results: reservations.length,
+    data: {
+      reservations,
+    },
+  });
 
-    // Fields to be returned
-    if (req.query.fields) {
-      query = query.select(req.query.fields);
-    }
+  //   try {
+  //     // Filtering
+  //     const queryObj = { ...req.query };
+  //     let queryStr = JSON.stringify(queryObj);
+  //     queryStr = queryStr.replace(/\b(gte|lte|lt|gt)\b/g, (match) => `$${match}`);
 
-    // Pagination
-    const page = req.query.page * 1 || 1; // string to number and default to 1
-    const limit = req.query.limit * 1 || 50;
-    const skip = (page - 1) * limit;
-    query = query.skip(skip).limit(limit);
+  //     let query = Reservation.find(JSON.parse(queryStr));
 
-    if (req.query.page) {
-      // Check if page exists
-      const numReservations = await Reservation.countDocuments();
-      if (skip >= numReservations) throw new Error("This page does not exist");
-    }
+  //     // Sorting
+  //     if (req.query.sort) {
+  //       query = query.sort(req.query.sort);
+  //     }
 
-    // Execute Query
-    const reservations = await query;
+  //     // Fields to be returned
+  //     if (req.query.fields) {
+  //       query = query.select(req.query.fields);
+  //     }
 
-    // Send Response
-    res.status(200).json({
-      status: "success",
-      results: reservations.length,
-      data: {
-        reservations,
-      },
-    });
-  } catch (error) {
-    res.status(404).json({ status: "fail", error: "Server error" });
-  }
+  //     // Pagination
+  //     const page = req.query.page * 1 || 1; // string to number and default to 1
+  //     const limit = req.query.limit * 1 || 50;
+  //     const skip = (page - 1) * limit;
+  //     query = query.skip(skip).limit(limit);
+
+  //     if (req.query.page) {
+  //       // Check if page exists
+  //       const numReservations = await Reservation.countDocuments();
+  //       if (skip >= numReservations) throw new Error("This page does not exist");
+  //     }
+
+  //     // Execute Query
+  //     const reservations = await query;
+
+  //     // Send Response
+  //     res.status(200).json({
+  //       status: "success",
+  //       results: reservations.length,
+  //       data: {
+  //         reservations,
+  //       },
+  //     });
+  //   } catch (error) {
+  //     res.status(404).json({ status: "fail", error: "Server error" });
+  //   }
 };
 
 exports.getReservation = async (req, res) => {

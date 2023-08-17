@@ -44,9 +44,9 @@ Content-Type: application/json
 {
   "eventName": "Dinner",
   "eventDate": "2023-09-15T08:00:00Z",
-  "userName":  "Kezban Yilmaz",
+  "userName":  "Jonattan Yilmaz",
   "location":  "indoor",
-  "numberOfPeople": 6
+  "numberOfPeople": 5
 }
 
 
