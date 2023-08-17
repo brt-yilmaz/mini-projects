@@ -36,9 +36,8 @@ Content-Type: application/json
 }
 
 
-###
+
 ### Create a New Reservation
-###
 POST http://localhost:3000/reservations/create
 Content-Type: application/json
 
@@ -51,9 +50,15 @@ Content-Type: application/json
 }
 
 
-###
+
 ### Delete by Id
-###
 
 DELETE http://localhost:3000/reservations/getReservations/64da266fd2110ddfd4c818f7
+
+### Sort by fields
+
+GET http://localhost:3000/reservations/getReservations?fields=numberOfPeople%20eventName%20
+
+### Pagination 
+GET http://localhost:3000/reservations/getReservations?fields=numberOfPeople%20eventName&page=2&limit=2
 

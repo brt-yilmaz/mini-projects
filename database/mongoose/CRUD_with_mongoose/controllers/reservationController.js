@@ -34,6 +34,20 @@ exports.getAllReservations = async (req, res) => {
     }
 
     // Field Limiting (Projecting)
+    if (req.query.fields) {
+      query = query.select(req.query.fields);
+    }
+
+    // Pagination
+    const page = req.query.page * 1 || 1; // string to number and default to 1
+    const limit = req.query.limit * 1 || 50;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(limit);
+
+    if (req.query.page) {
+      const numReservations = await Reservation.countDocuments();
+      if (skip >= numReservations) throw new Error("This page does not exist");
+    }
 
     // Execute Query
     const reservations = await query;
