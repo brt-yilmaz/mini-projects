@@ -19,6 +19,13 @@ exports.createReservation = async (req, res) => {
   }
 };
 
+exports.aliasClosestReservations = async (req, res, next) => {
+  req.query.limit = "3";
+  req.query.sort = "-eventDate";
+  req.query.fields = "eventName";
+  next();
+};
+
 exports.getAllReservations = async (req, res) => {
   try {
     // Filtering
@@ -33,7 +40,7 @@ exports.getAllReservations = async (req, res) => {
       query = query.sort(req.query.sort);
     }
 
-    // Field Limiting (Projecting)
+    // Fields to be returned
     if (req.query.fields) {
       query = query.select(req.query.fields);
     }
@@ -45,12 +52,15 @@ exports.getAllReservations = async (req, res) => {
     query = query.skip(skip).limit(limit);
 
     if (req.query.page) {
+      // Check if page exists
       const numReservations = await Reservation.countDocuments();
       if (skip >= numReservations) throw new Error("This page does not exist");
     }
 
     // Execute Query
     const reservations = await query;
+
+    // Send Response
     res.status(200).json({
       status: "success",
       results: reservations.length,

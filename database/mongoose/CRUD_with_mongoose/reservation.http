@@ -62,3 +62,6 @@ GET http://localhost:3000/reservations/getReservations?fields=numberOfPeople%20e
 ### Pagination 
 GET http://localhost:3000/reservations/getReservations?fields=numberOfPeople%20eventName&page=2&limit=2
 
+### Closest Reservation
+
+GET http://localhost:3000/reservations/getReservations/closestReservation
