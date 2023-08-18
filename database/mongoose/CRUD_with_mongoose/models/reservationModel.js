@@ -14,6 +14,8 @@ const reservationSchema = new mongoose.Schema(
   },
   {
     strictQuery: true, // Mongoose will only return documents that match the fields that are defined in the schema.
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 
@@ -31,7 +33,7 @@ reservationSchema.query.byEventName = function (name) {
 };
 
 reservationSchema.virtual("namedEvent").get(function () {
-  // not save in database , works only in app
+  // not save in database , works only in app so that we can not use it in query
   return `${this.userName} <${this.eventName}>`;
 });
 

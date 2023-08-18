@@ -99,6 +99,7 @@ exports.getReservationStats = async (req, res) => {
     console.log("getReservationStats function is called");
 
     const stats = await Reservation.aggregate([
+      // you can use $unwind to distract the array
       {
         $match: {
           numberOfPeople: { $gt: 3 },
