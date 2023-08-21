@@ -7,7 +7,9 @@ const reservationSchema = new mongoose.Schema(
     userName: { type: String, required: true },
     location: { type: String, enum: ["indoor", "outdoor"], default: "indoor" },
     numberOfPeople: { type: Number, default: 4, min: 2, max: 10 },
-    createdAt: { type: Date, default: Date.now }, // immutable: true if you want to change, you won't be get an error , it will be ignored
+    createdAt: { type: Date, default: Date.now },
+    active: { type: Boolean, default: true },
+    // immutable: true if you want to change, you won't be get an error , it will be ignored
     // you can use {  type: mongoose.SchemaTypes.ObjectId , ref: 'Location'}  to refer another _id
     // you can use another schema in here location: locationSchema, best practice with complex object.
     // you can write your own validator like validate: {validator : v => v % 2 === 0, message: props => `${props.value} is not an even number`}. It only runs with create and save. You can use Reservation.findById().save()
@@ -38,11 +40,21 @@ reservationSchema.virtual("namedEvent").get(function () {
 });
 
 reservationSchema.pre("save", function (next) {
+  // DOCUMENT MIDDLEWARE: runs before .save() and .create()
   this.createdAt = Date.now();
   next();
 });
 
+// Query Middleware
+
+reservationSchema.pre(/^find/, function (next) {
+  // this points to the current query
+  this.find({ active: { $ne: false } }); // this is the query
+  next();
+});
+
 reservationSchema.post("save", function (doc, next) {
+  // doc is finished document
   doc.info();
   next();
 });
