@@ -38,3 +38,14 @@ process.nextTick(() => {
 });
 
 console.log("Script finished.");
+
+/*
+Starting the script.
+Script finished.
+Top-level callback inside process.nextTick executed.
+Top-level callback inside setImmediate executed.
+Nested callback inside setImmediate - nextTick executed.
+Nested callback inside setImmediate executed.
+File contents from top level fs.readFile: This is a test file to simulate nodejs event Loop.
+File contents from nested fs.readFile in set Immediate: This is a test file to simulate nodejs event Loop.
+*/
