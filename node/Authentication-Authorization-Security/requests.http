@@ -1,13 +1,13 @@
-###
 ### User Creation Request
-###
-
-POST http://localhost:3000/auth/signup
+POST http://localhost:3000/user/signup
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "johndoe@example.com",
-  "password": "mysecretpassword",
-  "passwordConfirm": "mysecretpassword"
+  "name": "Berat Yilmaz",
+  "email": "beratyilmaz3102@gmail.com",
+  "password": "_* m o r e S 3 c U r E *_",
+  "passwordConfirm": "_* m o r e S 3 c U r E *_"
 }
+
+### Get All Users
+GET http://localhost:3000/user/

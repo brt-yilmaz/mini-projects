@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const authRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 process.on("uncaughtException", (err) => {
   console.log("UNHANDLED REJECTION! 💥 Shutting down...");
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Routes
-app.use("/auth", authRoutes);
+app.use("/user", userRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
