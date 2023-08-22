@@ -54,7 +54,7 @@ reservationSchema.pre(/^find/, function (next) {
 });
 
 reservationSchema.post("save", function (doc, next) {
-  // doc is finished document
+  // doc is finished document ^
   doc.info();
   next();
 });
