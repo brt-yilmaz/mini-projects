@@ -1,9 +1,9 @@
-const { log } = require("console");
 const Reservation = require("../models/reservationModel");
+const catchAsync = require("../utils/catchAsync");
 
 const APIFeatures = require("../utils/apiFeatures");
 
-exports.createReservation = async (req, res) => {
+exports.createReservation = catchAsync(async (req, res) => {
   try {
     const { eventName, eventDate, userName, location, numberOfPeople } =
       req.body;
@@ -20,7 +20,7 @@ exports.createReservation = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
-};
+});
 
 exports.aliasClosestReservations = async (req, res, next) => {
   req.query.limit = "3";
