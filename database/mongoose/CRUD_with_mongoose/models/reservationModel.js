@@ -53,6 +53,13 @@ reservationSchema.pre(/^find/, function (next) {
   next();
 });
 
+// Aggregation Middleware
+
+reservationSchema.pre("aggregate", function (next) {
+  this.pipeline().unshift({ $match: { active: { $ne: false } } }); // this = aggregation array
+  next();
+});
+
 reservationSchema.post("save", function (doc, next) {
   // doc is finished document
   doc.info();
