@@ -6,6 +6,12 @@ const reservationRoutes = require("./routes/reservationRoutes");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 
+process.on("uncaughtException", (err) => {
+  console.log("UNHANDLED REJECTION! 💥 Shutting down...");
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
 dotenv.config();
 
 const app = express();
@@ -47,3 +53,11 @@ mongoose
   .catch((error) => {
     console.error("Database connection error:", error);
   });
+
+process.on("unhandledRejection", (err) => {
+  console.error(err.name, err.message);
+  console.log("UNHANDLED REJECTION! 💥 Shutting down...");
+  server.close(() => {
+    process.exit(1);
+  });
+});
