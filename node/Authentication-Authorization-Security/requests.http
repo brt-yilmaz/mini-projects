@@ -4,10 +4,20 @@ Content-Type: application/json
 
 {
   "name": "Berat Yilmaz",
-  "email": "beratyilmaz_3102@gmail.com",
-  "password": "_* m o r e S 3 c U r E *_",
-  "passwordConfirm": "_* m o r e S 3 c U r E *_"
+  "email": "beratyilmaz.job@gmail.com",
+  "password": "passtestpass",
+  "passwordConfirm": "passtestpass"
+}
+
+### Login
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+  "email": "beratyilmaz.job@gmail.com",
+  "password": "passtestpass"
 }
 
 ### Get All Users
 GET http://localhost:3000/user/
+
