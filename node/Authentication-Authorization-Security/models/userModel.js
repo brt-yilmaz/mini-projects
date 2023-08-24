@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: [true, "Name is required"] },
@@ -39,7 +40,6 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre("save", async function (next) {
-  console.log("Before Save:", this.role);
   // Only run this function if password was actually modified
   if (!this.isModified("password")) return next();
   // Hash the password with cost of 12
@@ -66,6 +66,16 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
   }
   // False means NOT changed
   return false;
+};
+
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+  this.passwordResetToken = crypto
+    .createHash("sha256") // SHA256 is a hashing algorithm
+    .update(resetToken) // update the token
+    .digest("hex"); // digest the token to hex  // 32 bytes of data to be hashed into a string of 32 characters
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
+  return resetToken;
 };
 
 const User = mongoose.model("User", userSchema);

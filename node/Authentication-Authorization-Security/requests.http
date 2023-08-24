@@ -4,10 +4,9 @@ Content-Type: application/json
 
 {
   "name": "Berat Yilmaz",
-  "email": "beratyilmaz.admin3@gmail.com",
+  "email": "hallo3@gmail.com",
   "password": "passtestpass",
-  "passwordConfirm": "passtestpass",
-  "role": "admin"
+  "passwordConfirm": "passtestpass"
 }
 
 ### Login with true data
@@ -39,3 +38,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTdhZDEzM
 ### Delete user with authorized account = role:admin
 DELETE http://localhost:3000/user/64e51cee65b8e507ca192ab5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTdiNjFjYmY0NGFlMjc1YTM3MDIwNCIsImlhdCI6MTY5MjkwNzAzNywiZXhwIjoxNjkzNTExODM3fQ.qY_MZZVlpsB0oect5VrZoWNxqVSgyuGCOWFwQAHohy4
+
+### Forgot Password
+POST http://localhost:3000/user/forgotPassword
+Content-Type: application/json
+
+{
+  "email": "beratyilmaz.job@gmail.com"
+}
