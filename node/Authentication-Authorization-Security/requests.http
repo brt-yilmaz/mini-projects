@@ -4,12 +4,12 @@ Content-Type: application/json
 
 {
   "name": "Berat Yilmaz",
-  "email": "beratyilmaz.job@gmail.com",
+  "email": "beratyilmaz.1@gmail.com",
   "password": "passtestpass",
   "passwordConfirm": "passtestpass"
 }
 
-### Login
+### Login with true data
 POST http://localhost:3000/user/login
 Content-Type: application/json
 
@@ -18,6 +18,15 @@ Content-Type: application/json
   "password": "passtestpass"
 }
 
+### Login 
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+  "email": "beratyilmaz.job@gmail.com"
+}
+
 ### Get All Users
 GET http://localhost:3000/user/
+Authorization: Bearer <token_here>
 
