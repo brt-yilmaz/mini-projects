@@ -4,9 +4,10 @@ Content-Type: application/json
 
 {
   "name": "Berat Yilmaz",
-  "email": "beratyilmaz.1@gmail.com",
+  "email": "beratyilmaz.admin3@gmail.com",
   "password": "passtestpass",
-  "passwordConfirm": "passtestpass"
+  "passwordConfirm": "passtestpass",
+  "role": "admin"
 }
 
 ### Login with true data
@@ -28,5 +29,13 @@ Content-Type: application/json
 
 ### Get All Users
 GET http://localhost:3000/user/
-Authorization: Bearer <token_here>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTdhZDEzMjAzNjg1NGY0YTE2NTJhOCIsImlhdCI6MTY5MjkwNDcyNCwiZXhwIjoxNjkzNTA5NTI0fQ.uUz6ZYQ-__ioSZspUPDGChkZyT2EKLBt5mvPl6Pggx4
 
+
+### Delete user with unauthorized account =  role:user
+DELETE http://localhost:3000/user/64e51cee65b8e507ca192ab5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTdhZDEzMjAzNjg1NGY0YTE2NTJhOCIsImlhdCI6MTY5MjkwNDcyNCwiZXhwIjoxNjkzNTA5NTI0fQ.uUz6ZYQ-__ioSZspUPDGChkZyT2EKLBt5mvPl6Pggx4
+
+### Delete user with authorized account = role:admin
+DELETE http://localhost:3000/user/64e51cee65b8e507ca192ab5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTdiNjFjYmY0NGFlMjc1YTM3MDIwNCIsImlhdCI6MTY5MjkwNzAzNywiZXhwIjoxNjkzNTExODM3fQ.qY_MZZVlpsB0oect5VrZoWNxqVSgyuGCOWFwQAHohy4
