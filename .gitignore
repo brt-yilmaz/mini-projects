@@ -226,3 +226,29 @@ Thumbs.db
 
 # AWS Elastic Beanstalk
 .elasticbeanstalk/
+
+# Compiled class file
+*.class
+
+# Log files
+*.log
+
+# IntelliJ IDEA
+.idea/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+target/
+
+# Gradle
+build/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
