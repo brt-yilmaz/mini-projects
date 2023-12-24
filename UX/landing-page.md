@@ -1,5 +1,7 @@
 # Landing Page
 
+[From Uxcel](https://app.uxcel.com/lessons/landing-page-best-practices-635)
+
 Don't overload landing pages with text
 
 Stick to clear, concise headlines that are relevant to the central content and demand attention. Shorter is generally better in this case.
