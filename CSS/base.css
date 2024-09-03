@@ -1,0 +1,3 @@
+html, body {
+    height: 100%;
+} /* use min-height = 100% in element , it takes avaliable height, also in mobile*/
