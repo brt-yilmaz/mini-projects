@@ -1,3 +1,16 @@
 .input {
   caret-color: aqua;
 }
+
+/* Add some padding to the li and a tag to not make all area clickable*/
+ li {
+  padding: 4px;
+ }
+
+ a {
+  padding: 4px;
+ }
+ /*******/
+
+
+ 
