@@ -1,0 +1,13 @@
+/*list items line up with eact other*/
+
+.container {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+  }
+
+  .container > ul {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 99; /*if you have lots of items */
+  }

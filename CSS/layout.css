@@ -11,6 +11,7 @@ body {
 /**************/
 
 /**** My Choice ***/
+/* think subgrid option if your layout complex*/
 body {
     display: grid;
     grid-template-columns: minmax(1rem, 1fr) min(100% - 2rem, 65ch) minmax(1rem, 1fr);
@@ -25,3 +26,5 @@ body {
     grid-column: 1 / -1;
   }
   /**********/
+
+  

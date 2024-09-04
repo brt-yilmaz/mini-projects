@@ -1,3 +1,11 @@
 html, body {
     height: 100%;
 } /* use min-height = 100% in element , it takes avaliable height, also in mobile*/
+
+p {
+    text-wrap: pretty;
+}
+
+h1 {
+    text-wrap: balance;
+}
