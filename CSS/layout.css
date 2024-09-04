@@ -1,0 +1,8 @@
+html, body {
+    height: 100%;
+} /* use min-height = 100% in element , it takes avaliable height, also in mobile*/
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr; /* first for the navbar, second for the main. You can use the same logic for the main also*/
+}
