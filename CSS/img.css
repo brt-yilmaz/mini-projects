@@ -4,3 +4,25 @@ img {
     max-width: 100%;
     display: block;
 }
+
+/* if you want to make text and image floating design*/ 
+
+/*
+pseudo html
+<div class = 'container'>
+    <p> flaksdjfladskj
+    <div>
+        <img>
+    </div>
+
+*/
+
+.container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+
+    img {
+        min-width: 300px;
+    }
+}
+
