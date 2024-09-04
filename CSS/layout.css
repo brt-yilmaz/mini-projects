@@ -15,13 +15,9 @@ body {
     display: grid;
     grid-template-columns: minmax(1rem, 1fr) min(100% - 2rem, 65ch) minmax(1rem, 1fr);
     gap: 5px;
-    box-sizing: border-box;
-    height: 200px;
-    background-color: #8cffa0;
   }
   
   body > * {
-    background-color: #8ca0ff;
     grid-column: 2 / 3
   }
 
