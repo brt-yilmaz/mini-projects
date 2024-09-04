@@ -7,8 +7,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(var(--min-col-size, 200px), 100%), 1fr)); /* 200px is the fallback if var is not defined*/ 
 }
-
 /*
 * auto-fit: The elements adapt to the available space in the grid and fill the full width.
 * auto-fill: The elements do not fit. The grid creates additional empty columns.
 */
+
+
+div {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr; /* first auto grows as much as it can */ 
+}
